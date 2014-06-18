@@ -1,0 +1,35 @@
+<% provide(:title, "| "+@shoplist.name) %>
+
+<%= javascript_include_tag 'computeSum.js' %>
+
+<h1><%= @shoplist.name %></h1>
+<div class="row">
+  <div class="span8">
+    <% if @shoplist.products.any? %>
+        <table id="ceny" class="table">
+          <tr class="well">
+            <th>Počet</th>
+            <th>Názov produktu</th>
+            <th>Billa</th>
+            <th>Carrefour</th>
+            <th>Kaufland</th>
+            <th>Lidl</th>
+            <th>Tesco</th>
+          </tr>
+          <% @ordProducts.each do |product,prices| %>
+              <tr>
+                <td><%= @quantity[product.id]%></td>
+                <td><%= link_to product.name, product %></td>
+              <% prices.each do |shop,price| %>
+                    <td><%= format_price @quantity[product.id], price  %></td>
+              <% end %>
+              </tr>
+          <%end%>
+        </table>
+
+    <% end %>
+  </div>
+</div>
+
+<br>
+<%= link_to "Pridať produkty", shoplist_products_path(@shoplist.id), class: "btn btn-success"%>

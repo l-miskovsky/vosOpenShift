@@ -1,0 +1,39 @@
+<style>
+    #linkButton {
+        margin-top: 10px;
+        background:none!important;
+        border:none;
+        padding:0!important;
+        color: gainsboro;
+    }
+</style>
+
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <% if signed_in? %>
+        <%= link_to "ShopList", shoplists_path, id: "logo" %>
+        <nav>
+          <ul class="nav pull-left">
+            <li><%= link_to "Produkty", products_path %></li>
+            <li><%= link_to "Nákupné zoznamy", shoplists_path %></li>
+          </ul>
+        </nav>
+      <% else %>
+        <%= link_to "ShopList", root_path, id: "logo" %>
+      <%end%>
+
+      <nav>
+        <ul class="nav pull-right">
+          <% if signed_in? %>
+            <li><%= button_to "Odhlásiť sa", signout_path, method: :delete, id: 'linkButton' %></li>
+          <% else %>
+            <li><%= link_to "Domov", root_path %></li>
+            <li><%= link_to "Prihlásiť sa", signin_path %></li>
+          <%end%>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+</header>

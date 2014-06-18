@@ -1,0 +1,39 @@
+<%provide(:title, '| Zoznam produktov')%>
+<h1>Zoznam produktov</h1>
+
+<%# <a href="link" onClick="">nieco</a> %>
+
+<div >
+  <%= form_tag products_path, method: :get do %>
+      <%= render 'searchbox'%>
+  <% end %>
+</div>
+<br>
+
+<%= render 'facets'%>
+
+<div><%= will_paginate %></div>
+
+<div>
+  <table>
+    <tr>
+      <th>Názov produktu</th>
+    </tr>
+    <% @products.each do |product|%>
+      <tr>
+        <td><%= link_to product.name, product %></td>
+        <% product.prices.each do |price|  %>
+            <td><%= price.price %></td>
+            <td><%= price.shop %></td>
+        <% end %>
+      </tr>
+    <%end%>
+  </table>
+</div>
+
+<%= will_paginate %>
+
+<br>
+<%= render 'new_product' %>
+
+

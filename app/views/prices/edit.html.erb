@@ -1,0 +1,8 @@
+<h1>Upraviť cenu v obchode <%= @cena.shop %></h1>
+<h4><%= link_to image_tag("sipkaSpat.png", alt: "Späť"), :back %>  <%= @product.name%></h4>
+
+<%= form_for (@cena) do |f| %>
+  <%= f.label :price, 'Nová cena: ' %>
+  <%= f.text_field :price %>
+  <%= f.submit "Upraviť", class: "btn" %>
+<% end %>

@@ -1,0 +1,26 @@
+<% provide(:title, '| Registrácia') %>
+<h1>Registrácia</h1>
+
+<div class="row">
+  <div class="span1 offset2">
+    <div class="col-md-4">
+      <%=form_for(@user) do |u|%>
+          <%= u.label :name, 'Meno' %>
+          <%= u.text_field :name %>
+          <%= u.label :email, 'Emailová adresa' %>
+          <%= u.text_field :email %>
+          <%= u.label :password, 'Heslo' %>
+          <%= u.password_field :password %>
+          <%= u.label :password_confirmation, 'Heslo znova' %>
+          <%= u.password_field :password_confirmation %> <br>
+          <%= u.submit "Registrovať", class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="span4 offset3">
+    <div class="col-md-4">
+      <h3>Už si zaregistrovaný?</h3>
+      <%= link_to "Prihlás sa", signin_path, class: "btn  btn-success" %>
+    </div>
+  </div>
+</div>

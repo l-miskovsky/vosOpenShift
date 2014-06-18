@@ -1,0 +1,13 @@
+<tr>
+  <%= form_tag ins_shoplist_product_path(shoplist.id, product.id), method: :post do %>
+    <td><input type="number" name="pocet" min="1" step="1" style="width: 50px; height: 28px; margin-top: 7px" value="1"/> ks
+    <%= submit_tag 'Pridať', class: 'btn btn-default'%></td>
+  <% end %>
+
+  <td><%= link_to product.name, product %></td>
+
+  <% product.prices.each do |price|  %>
+    <td><%= price.price %></td>
+    <td><%= price.shop %></td>
+  <% end %>
+</tr>

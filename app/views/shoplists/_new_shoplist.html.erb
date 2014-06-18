@@ -1,0 +1,5 @@
+<%=form_for(@shoplist) do |s|%>
+    <%= s.label 'Názov' %>
+    <%= s.text_field :name %><br>
+    <%= s.submit "Vytvoriť", class: "btn btn-success" %>
+<% end %>

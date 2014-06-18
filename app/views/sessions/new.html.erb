@@ -1,0 +1,18 @@
+<% provide(:title, '| Prihlásenie') %>
+
+<h1>Prihlásenie</h1>
+
+<div class="row">
+    <div class="span6 offset4">
+      <%=form_for(:session, url: sessions_path) do |s|%>
+          <%= s.label :email, 'Emailová adresa' %>
+          <%= s.text_field :email %>
+          <%= s.label :password, 'Heslo' %>
+          <%= s.password_field :password %><br>
+          <%= s.submit "Prihlásiť sa", class: "btn btn-success" %>
+      <% end %>
+
+      <p>Ešte nemáš účet? <%= link_to 'Registrácia', signup_path %></p>
+
+    </div>
+  </div>

@@ -1,0 +1,39 @@
+<style>
+  /*bolo by to v tom custom css keby mi to totalne nepokazilo celu stranku...*/
+    #menuWrapper {
+        left: 0px;
+        position: absolute;
+        margin-left: 5px;
+        margin-top: 50px;
+    }
+    #menu {
+        width: 205px;
+        position: absolute;
+        top: 0;
+        margin-top: 55px;
+    }
+    #menu.fixed {
+        position: fixed;
+        top: 0;
+    }
+</style>
+
+<%= javascript_include_tag 'scrollElement.js' %>
+
+<div id="menuWrapper">
+  <div id="menu" class="btn-group-vertical">
+    <% @search.facet(:category).rows.each do |row| %>
+      <% if params[:category].blank? %>
+        <%= link_to params.except(:page).merge({ category: row.value }), class: 'btn btn-default' do %>
+          <span class="badge pull-left"><%= row.count %></span>
+          <%= row.value%>
+        <%end%>
+      <% else %>
+        <%= link_to  params.except(:category, :page), class: 'btn btn-default' do %>
+          <%= image_tag 'sipkaSpat.png', alt: 'Späť' %>
+          <%= row.value%>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

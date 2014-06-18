@@ -1,0 +1,30 @@
+<% provide(:title, "| "+@product.name) %>
+<div class="row">
+
+  <h1><%= @product.name%></h1>
+  <% if @product.category%>
+    <h2>Kategória: <%= @product.category %></h2>
+  <%end%>
+  <div class="span8">
+    <% if @product.prices.any? %>
+        <h3>Ceny (<%= @product.prices.count %>)</h3>
+         <%= render @prices %>
+    <% end %>
+
+
+    <h4><%= link_to image_tag("sipkaSpat.png", alt: "Späť"), :back %> Pridať novú cenu</h4>
+    <%= form_for [@product, Price.new] do |f| %>
+        <div class='form-group'>
+          <%= f.label :price, 'Cena' %>
+          <%= f.text_field :price %>
+          <%= f.label :shop, 'Obchod' %>
+          <%= f.text_field :shop %>
+          <%= f.label :until, 'Platné do (nechať prázdne ak nejde o akciu):' %>
+          <%= f.text_field :until %>
+
+        </div>
+
+        <%= f.submit "Pridať cenu", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>

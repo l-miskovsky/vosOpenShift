@@ -1,0 +1,36 @@
+<%provide(:title, '| Produkty')%>
+<h1>Produkty</h1>
+
+
+
+<div >
+  <%= form_tag shoplist_products_path, method: :get do %>
+      <%= render 'searchbox'%>
+  <% end %>
+</div>
+</br>
+
+<%= render 'facets'%>
+</br>
+
+<div><%= will_paginate %></div>
+
+<div>
+  <table>
+    <tr class="well">
+      <th></th>
+      <th>Názov produktu</th>
+    </tr>
+    <%= render partial: "product", collection: @products, locals: { shoplist: @shoplist }%>
+  </table>
+</div>
+
+<%= will_paginate %>
+
+  <br>
+<div><h5 class="pull-right">Vybraný zoznam: <%= link_to @shoplist.name, shoplists_path, class: 'btn btn-default'%></h5></div>
+
+
+<%= render 'new_product' %>
+
+

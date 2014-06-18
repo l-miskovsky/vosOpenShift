@@ -1,0 +1,9 @@
+<li>
+  <span class="content">Cena: <%= link_to price.price, edit_price_path(price)%> € - </span>
+
+  <span class="content"><%= price.shop %></span>
+
+  <% unless price.until.nil? %>
+    <span class="content"> platí do: <%= price.until %></span>
+  <%end%>
+</li>
